@@ -11,14 +11,36 @@
     <div class="max-w-2xl mx-auto py-10">
         <h1 class="text-2xl font-bold mb-6 text-teal-700">Edit Gallery</h1>
         <form id="galleryForm">
+            <label class="block mb-2 font-semibold">Image File</label>
+            <input type="file" id="imgFile" accept="image/*" class="w-full mb-4 p-2 border rounded">
             <label class="block mb-2 font-semibold">Image URL</label>
-            <input type="text" name="img" class="w-full mb-4 p-2 border rounded" placeholder="http://...">
+            <input type="text" name="img" id="imgUrl" class="w-full mb-4 p-2 border rounded" placeholder="http://...">
             <label class="block mb-2 font-semibold">Caption</label>
             <input type="text" name="caption" class="w-full mb-4 p-2 border rounded" placeholder="Live Performance">
             <button type="submit" class="bg-teal-600 text-white px-4 py-2 rounded">Add Image</button>
             <div id="galleryMsg" class="mt-4 text-green-600 font-semibold hidden">Saved!</div>
+            <div id="imgurMsg" class="mt-2 text-blue-600 font-semibold hidden">Image uploaded to Imgur!</div>
         </form>
         <script>
+        const IMGUR_CLIENT_ID = '546f6e6e7e6b1e7'; // Demo client ID, replace with your own for production
+        const imgFile = document.getElementById('imgFile');
+        const imgUrl = document.getElementById('imgUrl');
+        imgFile.onchange = async function() {
+          const file = imgFile.files[0];
+          if (!file) return;
+          const formData = new FormData();
+          formData.append('image', file);
+          const res = await fetch('https://api.imgur.com/3/image', {
+            method: 'POST',
+            headers: { Authorization: 'Client-ID ' + IMGUR_CLIENT_ID },
+            body: formData
+          });
+          const data = await res.json();
+          if (data.success) {
+            imgUrl.value = data.data.link;
+            document.getElementById('imgurMsg').classList.remove('hidden');
+          }
+        };
         document.getElementById('galleryForm').onsubmit = async function(e) {
           e.preventDefault();
           const form = e.target;
