@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Elder Colossus</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        .sidebar {
+            transition: all 0.3s ease;
+        }
+        .active-tab {
+            background-color: rgba(13, 148, 136, 0.1);
+            border-left: 4px solid #0d9488;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="sidebar w-64 bg-gray-900 text-gray-100 shadow-lg">
+            <div class="p-4 border-b border-gray-800">
+                <h1 class="text-xl font-bold text-teal-500">Elder Colossus</h1>
+                <p class="text-sm text-gray-400">Admin Panel</p>
+            </div>
+            <nav class="mt-6">
+                <div class="px-4 py-3 flex items-center text-gray-300 hover:bg-gray-800 cursor-pointer active-tab">
+                    <i data-feather="home" class="w-5 h-5 mr-3"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="px-4 py-3 flex items-center text-gray-300 hover:bg-gray-800 cursor-pointer">
+                    <i data-feather="edit" class="w-5 h-5 mr-3"></i>
+                    <span>Edit Pages</span>
+                </div>
+                <div class="px-4 py-3 flex items-center text-gray-300 hover:bg-gray-800 cursor-pointer">
+                    <i data-feather="image" class="w-5 h-5 mr-3"></i>
+                    <span>Media Library</span>
+                </div>
+                <div class="px-4 py-3 flex items-center text-gray-300 hover:bg-gray-800 cursor-pointer">
+                    <i data-feather="calendar" class="w-5 h-5 mr-3"></i>
+                    <span>Tour Dates</span>
+                </div>
+                <div class="px-4 py-3 flex items-center text-gray-300 hover:bg-gray-800 cursor-pointer">
+                    <i data-feather="shopping-bag" class="w-5 h-5 mr-3"></i>
+                    <span>Merchandise</span>
+                </div>
+                <div class="px-4 py-3 flex items-center text-gray-300 hover:bg-gray-800 cursor-pointer">
+                    <i data-feather="users" class="w-5 h-5 mr-3"></i>
+                    <span>Band Members</span>
+                </div>
+                <div class="px-4 py-3 flex items-center text-gray-300 hover:bg-gray-800 cursor-pointer">
+                    <i data-feather="settings" class="w-5 h-5 mr-3"></i>
+                    <span>Settings</span>
+                </div>
+                <div class="px-4 py-3 flex items-center text-gray-300 hover:bg-gray-800 cursor-pointer" onclick="window.location.href='deployment-guide.html'">
+                    <i data-feather="upload-cloud" class="w-5 h-5 mr-3"></i>
+                    <span>Deployment Guide</span>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-auto">
+            <!-- Header -->
+            <header class="bg-white shadow-sm">
+                <div class="flex justify-between items-center px-6 py-4">
+                    <h2 class="text-xl font-semibold text-gray-800">Dashboard</h2>
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <i data-feather="bell" class="text-gray-500"></i>
+                            <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-teal-500"></span>
+                        </div>
+                        <div class="flex items-center">
+                            <img src="http://static.photos/people/200x200/5" alt="Admin" class="w-8 h-8 rounded-full">
+                            <span class="ml-2 text-sm font-medium text-gray-700">Admin</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <main class="p-6">
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-teal-100 text-teal-600 mr-4">
+                                <i data-feather="users"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Visitors</p>
+                                <p class="text-2xl font-bold">1,254</p>
+                                <p class="text-xs text-green-500">+12% from last week</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-blue-100 text-blue-600 mr-4">
+                                <i data-feather="shopping-cart"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Merch Sales</p>
+                                <p class="text-2xl font-bold">$3,540</p>
+                                <p class="text-xs text-green-500">+24% from last month</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-purple-100 text-purple-600 mr-4">
+                                <i data-feather="calendar"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Upcoming Shows</p>
+                                <p class="text-2xl font-bold">3</p>
+                                <p class="text-xs text-gray-500">Next: Oct 12, 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <div class="flex items-center">
+                            <div class="p-3 rounded-full bg-yellow-100 text-yellow-600 mr-4">
+                                <i data-feather="message-square"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">New Messages</p>
+                                <p class="text-2xl font-bold">12</p>
+                                <p class="text-xs text-red-500">2 require attention</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white rounded-lg shadow p-6 mb-6">
+                    <h3 class="text-lg font-semibold mb-4">Recent Activity</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="p-2 bg-gray-100 rounded-full mr-4">
+                                <i data-feather="edit" class="text-teal-500"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium">You updated the tour dates</p>
+                                <p class="text-xs text-gray-500">2 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="p-2 bg-gray-100 rounded-full mr-4">
+                                <i data-feather="image" class="text-blue-500"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium">New photos added to gallery</p>
+                                <p class="text-xs text-gray-500">5 hours ago</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="p-2 bg-gray-100 rounded-full mr-4">
+                                <i data-feather="shopping-bag" class="text-purple-500"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium">New merchandise item added</p>
+                                <p class="text-xs text-gray-500">1 day ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Edit Homepage</h3>
+                        <p class="text-sm text-gray-500 mb-4">Update the main content of your website</p>
+                        <button onclick="window.location.href='#edit-homepage'" class="w-full bg-teal-600 hover:bg-teal-700 text-white py-2 rounded-md text-sm font-medium">
+                            Edit Page
+                        </button>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Add Tour Date</h3>
+                        <p class="text-sm text-gray-500 mb-4">Schedule a new performance</p>
+                        <button onclick="window.location.href='#edit-tour'" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md text-sm font-medium">
+                            Add Event
+                        </button>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6">
+                        <h3 class="text-lg font-semibold mb-4">Upload Media</h3>
+                        <p class="text-sm text-gray-500 mb-4">Add photos to your gallery</p>
+                        <button onclick="window.location.href='gallery.html#edit-gallery'" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-md text-sm font-medium">
+                            Upload Files
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Activate sidebar tabs on click
+        const tabs = document.querySelectorAll('nav div:not(.active-tab)');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelector('.active-tab').classList.remove('active-tab');
+                this.classList.add('active-tab');
+            });
+        });
+    </script>
+    <script>AOS.init();</script>
+    <script>feather.replace();</script>
+</body>
+</html>

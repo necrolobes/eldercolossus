@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Elder Colossus</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 25px rgba(13, 148, 136, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 font-sans">
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-gray-900 bg-opacity-90 z-50 border-b border-gray-800">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <span class="text-teal-500 font-bold text-xl">ELDER COLOSSUS</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-teal-500">Home</a>
+                    <a href="index.html#music" class="text-gray-300 hover:text-teal-500">Music</a>
+                    <a href="index.html#tour" class="text-gray-300 hover:text-teal-500">Tour</a>
+                    <a href="gallery.html" class="text-gray-300 hover:text-teal-500 nav-active">Gallery</a>
+                    <a href="index.html#merch" class="text-gray-300 hover:text-teal-500">Merch</a>
+                    <a href="index.html#contact" class="text-gray-300 hover:text-teal-500">Contact</a>
+                    <a href="admin.html" class="text-gray-300 hover:text-teal-500 bg-teal-900 bg-opacity-30 px-2 py-1 rounded">Admin</a>
+                    <a href="deployment-guide.html" class="text-gray-300 hover:text-teal-500 bg-gray-800 bg-opacity-30 px-2 py-1 rounded">Deploy</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="mobile-menu-button p-2 focus:outline-none">
+                        <i data-feather="menu" class="text-gray-300"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div class="mobile-menu hidden md:hidden bg-gray-800">
+            <a href="index.html" class="block py-2 px-4 text-sm hover:bg-gray-700">Home</a>
+            <a href="index.html#music" class="block py-2 px-4 text-sm hover:bg-gray-700">Music</a>
+            <a href="index.html#tour" class="block py-2 px-4 text-sm hover:bg-gray-700">Tour</a>
+            <a href="gallery.html" class="block py-2 px-4 text-sm hover:bg-gray-700 bg-gray-700">Gallery</a>
+            <a href="index.html#merch" class="block py-2 px-4 text-sm hover:bg-gray-700">Merch</a>
+            <a href="index.html#contact" class="block py-2 px-4 text-sm hover:bg-gray-700">Contact</a>
+            <a href="admin.html" class="block py-2 px-4 text-sm hover:bg-gray-700">Admin</a>
+        </div>
+    </nav>
+
+    <!-- Gallery Section -->
+    <section class="pt-32 pb-16 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">GALLERY</h1>
+                <div class="w-20 h-1 bg-teal-600 mx-auto"></div>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Live performances, behind the scenes, and more from Elder Colossus</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Image 1 -->
+                <div class="gallery-item overflow-hidden rounded-lg" data-aos="fade-up" data-gallery-item="1">
+                    <a href="#" class="block relative group">
+                        <img src="http://static.photos/music/640x360/10" alt="Live Performance" class="w-full h-64 object-cover" data-gallery-image="1">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <i data-feather="zoom-in" class="text-white w-10 h-10"></i>
+                        </div>
+                    </a>
+                </div>
+                <!-- Image 2 -->
+                <div class="gallery-item overflow-hidden rounded-lg" data-aos="fade-up" data-aos-delay="100" data-gallery-item="2">
+                    <a href="#" class="block relative group">
+                        <img src="http://static.photos/music/640x360/11" alt="Studio Session" class="w-full h-64 object-cover" data-gallery-image="2">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <i data-feather="zoom-in" class="text-white w-10 h-10"></i>
+                        </div>
+                    </a>
+                </div>
+                <!-- Image 3 -->
+                <div class="gallery-item overflow-hidden rounded-lg" data-aos="fade-up" data-aos-delay="200" data-gallery-item="3">
+                    <a href="#" class="block relative group">
+                        <img src="http://static.photos/music/640x360/12" alt="Band Backstage" class="w-full h-64 object-cover" data-gallery-image="3">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <i data-feather="zoom-in" class="text-white w-10 h-10"></i>
+                        </div>
+                    </a>
+                </div>
+                <!-- Image 4 -->
+                <div class="gallery-item overflow-hidden rounded-lg" data-aos="fade-up" data-gallery-item="4">
+                    <a href="#" class="block relative group">
+                        <img src="http://static.photos/music/640x360/13" alt="Crowd Shot" class="w-full h-64 object-cover" data-gallery-image="4">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <i data-feather="zoom-in" class="text-white w-10 h-10"></i>
+                        </div>
+                    </a>
+                </div>
+                <!-- Image 5 -->
+                <div class="gallery-item overflow-hidden rounded-lg" data-aos="fade-up" data-aos-delay="100" data-gallery-item="5">
+                    <a href="#" class="block relative group">
+                        <img src="http://static.photos/music/640x360/14" alt="Guitar Closeup" class="w-full h-64 object-cover" data-gallery-image="5">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <i data-feather="zoom-in" class="text-white w-10 h-10"></i>
+                        </div>
+                    </a>
+                </div>
+                <!-- Image 6 -->
+                <div class="gallery-item overflow-hidden rounded-lg" data-aos="fade-up" data-aos-delay="200" data-gallery-item="6">
+                    <a href="#" class="block relative group">
+                        <img src="http://static.photos/music/640x360/15" alt="Drummer Action" class="w-full h-64 object-cover" data-gallery-image="6">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <i data-feather="zoom-in" class="text-white w-10 h-10"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block border-2 border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white px-6 py-3 rounded-md font-medium transition duration-300">Load More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="flex justify-center md:justify-start space-x-6 mb-6 md:mb-0">
+                    <a href="https://facebook.com/eldercolossus" target="_blank" class="text-gray-400 hover:text-teal-500">
+                        <span class="sr-only">Facebook</span>
+                        <i data-feather="facebook"></i>
+                    </a>
+                    <a href="https://instagram.com/eldercolossus" target="_blank" class="text-gray-400 hover:text-teal-500">
+                        <span class="sr-only">Instagram</span>
+                        <i data-feather="instagram"></i>
+                    </a>
+                    <a href="https://youtube.com/eldercolossus" target="_blank" class="text-gray-400 hover:text-teal-500">
+                        <span class="sr-only">YouTube</span>
+                        <i data-feather="youtube"></i>
+                    </a>
+                    <a href="https://eldercolossus.bandcamp.com" target="_blank" class="text-gray-400 hover:text-teal-500">
+                        <span class="sr-only">Bandcamp</span>
+                        <i data-feather="disc"></i>
+                    </a>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-sm text-gray-500">&copy; 2024 Elder Colossus. All rights reserved.</p>
+                    <p class="text-xs text-gray-600 mt-1">Website designed for Elder Colossus</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking a link
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Handle gallery editing
+        if(window.location.hash === '#edit-gallery') {
+            showGalleryEditMode();
+        }
+
+        function showGalleryEditMode() {
+            // Add edit controls to each gallery item
+            const galleryItems = document.querySelectorAll('[data-gallery-item]');
+            galleryItems.forEach(item => {
+                const editBtn = document.createElement('button');
+                editBtn.className = 'absolute top-2 right-2 bg-teal-600 text-white p-1 rounded text-xs';
+                editBtn.innerHTML = '<i data-feather="edit"></i>';
+                editBtn.onclick = (e) => {
+                    e.preventDefault();
+                    editGalleryItem(item.dataset.galleryItem);
+                };
+                item.appendChild(editBtn);
+            });
+
+            // Add upload button
+            const loadMoreBtn = document.querySelector('a[href="#"]');
+            if(loadMoreBtn) {
+                loadMoreBtn.textContent = 'Upload New Images';
+                loadMoreBtn.onclick = (e) => {
+                    e.preventDefault();
+                    showImageUploadForm();
+                };
+            }
+
+            feather.replace();
+        }
+
+        function editGalleryItem(itemId) {
+            console.log('Edit gallery item:', itemId);
+            // Implementation for editing a gallery item
+        }
+
+        function showImageUploadForm() {
+            console.log('Show image upload form');
+            // Implementation for uploading new images
+        }
+    </script>
+    <script>AOS.init();</script>
+    <script>feather.replace();</script>
+</body>
+</html>
