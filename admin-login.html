@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Elder Colossus</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen">
+  <div class="bg-gray-800 p-8 rounded shadow-lg w-full max-w-sm">
+    <h1 class="text-2xl font-bold text-teal-400 mb-6 text-center">Admin Login</h1>
+    <form id="loginForm">
+      <label class="block mb-2 text-gray-300">Username</label>
+      <input type="text" name="username" class="w-full mb-4 p-2 rounded bg-gray-700 text-white" required>
+      <label class="block mb-2 text-gray-300">Password</label>
+      <input type="password" name="password" class="w-full mb-4 p-2 rounded bg-gray-700 text-white" required>
+      <button type="submit" class="w-full bg-teal-600 hover:bg-teal-700 text-white py-2 rounded font-semibold">Login</button>
+      <div id="loginMsg" class="mt-4 text-red-400 font-semibold hidden">Invalid credentials</div>
+    </form>
+    <button id="resetBtn" class="mt-4 text-sm text-teal-400 underline w-full">Forgot password?</button>
+    <div id="resetMsg" class="mt-2 text-green-400 font-semibold hidden">Password reset to 'admin'.</div>
+  </div>
+  <script>
+    document.getElementById('loginForm').onsubmit = async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          action: 'login',
+          username: form.username.value,
+          password: form.password.value
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        localStorage.setItem('adminAuth', 'true');
+        window.location.href = 'admin.html';
+      } else {
+        document.getElementById('loginMsg').classList.remove('hidden');
+      }
+    };
+    document.getElementById('resetBtn').onclick = async function() {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'reset' })
+      });
+      if (res.ok) {
+        document.getElementById('resetMsg').classList.remove('hidden');
+      }
+    };
+  </script>
+</body>
+</html>

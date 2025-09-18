@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Homepage | Admin Panel</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="max-w-2xl mx-auto py-10">
+        <h1 class="text-2xl font-bold mb-6 text-teal-700">Edit Homepage</h1>
+        <form id="homepageForm">
+            <label class="block mb-2 font-semibold">Main Title</label>
+            <input type="text" name="title" class="w-full mb-4 p-2 border rounded" placeholder="ELDER COLOSSUS">
+            <label class="block mb-2 font-semibold">Subtitle</label>
+            <input type="text" name="subtitle" class="w-full mb-4 p-2 border rounded" placeholder="Progressive metal band from Canada...">
+            <label class="block mb-2 font-semibold">Hero Image URL</label>
+            <input type="text" name="heroImage" class="w-full mb-4 p-2 border rounded" placeholder="https://...">
+            <button type="submit" class="bg-teal-600 text-white px-4 py-2 rounded">Save Changes</button>
+            <div id="homepageMsg" class="mt-4 text-green-600 font-semibold hidden">Saved!</div>
+        </form>
+        <script>
+        document.getElementById('homepageForm').onsubmit = async function(e) {
+          e.preventDefault();
+          const form = e.target;
+          const data = {
+            title: form.title.value,
+            subtitle: form.subtitle.value,
+            heroImage: form.heroImage.value
+          };
+          const res = await fetch('/api/save-homepage', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (res.ok) {
+            document.getElementById('homepageMsg').classList.remove('hidden');
+          }
+        };
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Settings | Admin Panel</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="max-w-2xl mx-auto py-10">
+        <h1 class="text-2xl font-bold mb-6 text-teal-700">Edit Settings</h1>
+        <form id="settingsForm">
+            <label class="block mb-2 font-semibold">Site Title</label>
+            <input type="text" name="siteTitle" class="w-full mb-4 p-2 border rounded" placeholder="Elder Colossus">
+            <label class="block mb-2 font-semibold">Contact Email</label>
+            <input type="email" name="contactEmail" class="w-full mb-4 p-2 border rounded" placeholder="booking@eldercolossus.com">
+            <button type="submit" class="bg-teal-600 text-white px-4 py-2 rounded">Save Changes</button>
+            <div id="settingsMsg" class="mt-4 text-green-600 font-semibold hidden">Saved!</div>
+        </form>
+        <script>
+        document.getElementById('settingsForm').onsubmit = async function(e) {
+          e.preventDefault();
+          const form = e.target;
+          const data = {
+            siteTitle: form.siteTitle.value,
+            contactEmail: form.contactEmail.value
+          };
+          const res = await fetch('/api/save-settings', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (res.ok) {
+            document.getElementById('settingsMsg').classList.remove('hidden');
+          }
+        };
+        </script>
+    </div>
+</body>
+</html>

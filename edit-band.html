@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Band Members | Admin Panel</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="max-w-2xl mx-auto py-10">
+        <h1 class="text-2xl font-bold mb-6 text-teal-700">Edit Band Members</h1>
+        <form id="bandForm">
+            <label class="block mb-2 font-semibold">Name</label>
+            <input type="text" name="name" class="w-full mb-4 p-2 border rounded" placeholder="Alex Turner">
+            <label class="block mb-2 font-semibold">Role</label>
+            <input type="text" name="role" class="w-full mb-4 p-2 border rounded" placeholder="Vocals/Guitar">
+            <label class="block mb-2 font-semibold">Photo URL</label>
+            <input type="text" name="photo" class="w-full mb-4 p-2 border rounded" placeholder="http://...">
+            <button type="submit" class="bg-teal-600 text-white px-4 py-2 rounded">Save Changes</button>
+            <div id="bandMsg" class="mt-4 text-green-600 font-semibold hidden">Saved!</div>
+        </form>
+        <script>
+        document.getElementById('bandForm').onsubmit = async function(e) {
+          e.preventDefault();
+          const form = e.target;
+          const data = {
+            name: form.name.value,
+            role: form.role.value,
+            photo: form.photo.value
+          };
+          const res = await fetch('/api/save-band', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (res.ok) {
+            document.getElementById('bandMsg').classList.remove('hidden');
+          }
+        };
+        </script>
+    </div>
+</body>
+</html>

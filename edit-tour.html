@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Tour Dates | Admin Panel</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="max-w-2xl mx-auto py-10">
+        <h1 class="text-2xl font-bold mb-6 text-teal-700">Edit Tour Dates</h1>
+        <form id="tourForm">
+            <label class="block mb-2 font-semibold">Event Name</label>
+            <input type="text" name="event" class="w-full mb-4 p-2 border rounded" placeholder="The Green Room">
+            <label class="block mb-2 font-semibold">Date</label>
+            <input type="date" name="date" class="w-full mb-4 p-2 border rounded">
+            <label class="block mb-2 font-semibold">Location</label>
+            <input type="text" name="location" class="w-full mb-4 p-2 border rounded" placeholder="Saskatoon, SK">
+            <label class="block mb-2 font-semibold">Details</label>
+            <textarea name="details" class="w-full mb-4 p-2 border rounded" placeholder="With Kyrotic, T.V. Casualties, and Broken Idols"></textarea>
+            <button type="submit" class="bg-teal-600 text-white px-4 py-2 rounded">Save Changes</button>
+            <div id="tourMsg" class="mt-4 text-green-600 font-semibold hidden">Saved!</div>
+        </form>
+        <script>
+        document.getElementById('tourForm').onsubmit = async function(e) {
+          e.preventDefault();
+          const form = e.target;
+          const data = {
+            event: form.event.value,
+            date: form.date.value,
+            location: form.location.value,
+            details: form.details.value
+          };
+          const res = await fetch('/api/save-tour', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (res.ok) {
+            document.getElementById('tourMsg').classList.remove('hidden');
+          }
+        };
+        </script>
+    </div>
+</body>
+</html>

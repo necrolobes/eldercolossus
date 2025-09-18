@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Gallery | Admin Panel</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="max-w-2xl mx-auto py-10">
+        <h1 class="text-2xl font-bold mb-6 text-teal-700">Edit Gallery</h1>
+        <form id="galleryForm">
+            <label class="block mb-2 font-semibold">Image URL</label>
+            <input type="text" name="img" class="w-full mb-4 p-2 border rounded" placeholder="http://...">
+            <label class="block mb-2 font-semibold">Caption</label>
+            <input type="text" name="caption" class="w-full mb-4 p-2 border rounded" placeholder="Live Performance">
+            <button type="submit" class="bg-teal-600 text-white px-4 py-2 rounded">Add Image</button>
+            <div id="galleryMsg" class="mt-4 text-green-600 font-semibold hidden">Saved!</div>
+        </form>
+        <script>
+        document.getElementById('galleryForm').onsubmit = async function(e) {
+          e.preventDefault();
+          const form = e.target;
+          const data = {
+            img: form.img.value,
+            caption: form.caption.value
+          };
+          const res = await fetch('/api/save-gallery', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          if (res.ok) {
+            document.getElementById('galleryMsg').classList.remove('hidden');
+          }
+        };
+        </script>
+    </div>
+</body>
+</html>
