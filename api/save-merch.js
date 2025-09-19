@@ -3,7 +3,14 @@ import { promises as fs } from 'fs';
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
-      await fs.writeFile('merch.json', JSON.stringify(req.body, null, 2));
+      let items = [];
+      try {
+        const file = await fs.readFile('merch.json', 'utf-8');
+        items = JSON.parse(file);
+        if (!Array.isArray(items)) items = [];
+      } catch {}
+      items.push(req.body);
+      await fs.writeFile('merch.json', JSON.stringify(items, null, 2));
       res.status(200).json({ success: true });
     } catch (err) {
       res.status(500).json({ error: 'Failed to save merch data.' });
